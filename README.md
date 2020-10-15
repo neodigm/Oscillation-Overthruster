@@ -1,7 +1,7 @@
 # Oscillation-Overthruster
 Oscillation Overthruster
 
-🍰 Update Oscillation Overthruster (Hugo GoLang)🪐
+✨Blender Three.js 🍭 glTF UV Mapping 👁️
 
 #
 [Portfolio Blog](https://www.theScottKrause.com) |
