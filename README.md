@@ -1,8 +1,6 @@
 # Oscillation-Overthruster
 Oscillation Overthruster
 
-✨Blender Three.js 🍭 glTF UV Mapping 👁️
-
 ```javascript
     let fCycle = ( (_d, _q, _t) => {  //  Cycle content display
         let aCycCnt = [..._d.querySelectorAll( _q )];
