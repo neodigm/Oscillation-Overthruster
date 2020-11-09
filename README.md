@@ -3,6 +3,45 @@ Oscillation Overthruster
 
 ✨Blender Three.js 🍭 glTF UV Mapping 👁️
 
+```javascript
+    let fCycle = ( (_d, _q, _t) => {  //  Cycle content display
+        let aCycCnt = [..._d.querySelectorAll( _q )];
+        if( aCycCnt ){
+            aCycCnt.forEach( (eCycCnt) => {
+                eCycCnt.nCycCnt=0;
+                eCycCnt.addEventListener("click", (ev)=>{ fCycle.tick( false ); });
+            } );
+            setTimeout( ()=>{ fCycle.tick(); }, 4);
+        }
+        return {
+            "pretick": ()=> {  // Blur
+                var eCycLive = _d.querySelector( "[data-at-cycle-live='true']" );
+                eCycLive.classList.add( "h-fade" );
+                eCycLive.dataset.atCycleLive = "false";
+            },
+            "tick": ( bTimeout=true )=>{
+                aCycCnt.map( (e)=>{
+                    [...e.children].forEach( (eChild, nIndx) => {
+                    eChild.classList.remove("h-ds__inline", "h-ds__none");
+                    eChild.classList.remove( "h-fade" );
+                    if( nIndx === e.nCycCnt ){
+                        eChild.classList.add( "h-ds__inline" );
+                        eChild.dataset.atCycleLive = "true";
+                    }else{
+                        eChild.classList.add( "h-ds__none" );
+                    }
+                    });
+                    e.nCycCnt = (e.nCycCnt === (e.children.length - 1)) ? 0 : (e.nCycCnt + 1);
+                });
+                if( bTimeout && (aCycCnt.length > 0) ){
+                    setTimeout( ()=>{ fCycle.pretick(); }, (_t - 880));
+                    setTimeout( ()=>{ fCycle.tick(); }, _t);
+                }
+            }
+        }
+    })(document, "[data-at-cycle]", 12496 );
+```
+
 #
 [Portfolio Blog](https://www.theScottKrause.com) |
 [🚀 Résumé](https://thescottkrause.com/Arcanus_Scott_C_Krause_2020.pdf) |
