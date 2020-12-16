@@ -1,4 +1,4 @@
-# Oscillation-Overthruster
+# Oscillation Overthruster
 Oscillation Overthruster
 
 ```javascript
