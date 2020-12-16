@@ -1,8 +1,6 @@
 "use strict";
 Vue.config.devtools = true;
-
-var doZoom = null;
-
+var holdfast =  function(){ //
 var vltdc_productdetail = new Vue( {
   el: "#js-productdetail--id",
   data: {
@@ -55,14 +53,18 @@ var vltdc_productdetail = new Vue( {
     isProductDescCollapsed: true,
     isExclusive: false,
     isInit: false,
-    showSocial: false
+    showSocial: false,
+    aExpColDet: [false], // Expand Collapse Details
+    oHeroZmRv: {"isInit": false, "x": 0, "y": 0, "w": 0, "h": 0, "zMult": 2, "zRatio": 1.1,"setMtrx": [-.25, 1.01, -.05, .8]},
+    oHeroZm:   {"isInit": false, "x": 0, "y": 0, "w": 0, "h": 0, "zMult": 2, "zRatio": 2,"setMtrx": [1.18, 3, 1.8, 3]},
+    oHeroZmMob:{"isInit": false, "x": 0, "y": 0, "isDown": false, "doubleTap": false, "curTN": 0, "nXdiff": -1, "nEvMouseXY": [0,0],"zRatio": 1, "aEv": []}
   },
   watch: {
     aFlickHero : function(){
       vltdc_productdetail.bindFlick();
     },
     selectedHero : function(){
-      this.zoomzoom();
+      this.doHeroMobScale( 0 ); // Reset img scale
     },
     isCartMsg : function(){
       if( this.isCartMsg ){
@@ -97,6 +99,16 @@ var vltdc_productdetail = new Vue( {
       var _nFlickHeroPers = this.nFlickHeroPers;
       var _isExclusive = this.isExclusive;
       var _nCnt = 0, _sSizeChart = "";
+      var _aExpColDet = _v.jResponse.detailDescription; // Expand Collapse Details
+      if( _aExpColDet.toLowerCase().indexOf("u>") != -1 ){
+        _aExpColDet = _aExpColDet.split( ( (_aExpColDet.indexOf("u>") == -1) ? "U>" : "u>" ) ); 
+        if( _aExpColDet.length == 3 ){
+          this.aExpColDet[1] = _aExpColDet[0].slice(0, -1); this.aExpColDet[2] = _aExpColDet[2];
+        }
+      }else{
+          this.aExpColDet[1] = _v.jResponse.detailDescription; this.aExpColDet[2] = null;
+      }
+
       this.selectedSKU = this.jResponse.childSkus[0];
       if( this.jResponse.childSkus.length >= 2 ){
         this.noDropdowns = 1; // No of Dropdowns | 0,1 or 2
@@ -247,24 +259,174 @@ var vltdc_productdetail = new Vue( {
     }  //  End of JResponse watch
   },
   methods: {
-    "zoomzoom": function(){
-
-      if( oTopmenu && !oTopmenu.isMobile() ){
-        /*var sInner = "<img id=#js-z__image# src=#" + vltdc_productdetail.selectedHero + "# alt=#Magnifying Glass#>"; */
-        var sInner = "<img id=#js-z__image# src=#" + vltdc_productdetail.selectedHero + "# alt=#Magnifying "+vltdc_productdetail.selectedAlt+"#>"; 
-        var nHsize = ( document.body.dataset.brand === "FF" ) ? 240 : 177; 
-        document.getElementById( "js-z__cont" ).innerHTML = sInner.split('#').join("'");
-        vltdc_productdetail.$forceUpdate();
-        doZoom = new Zoom("#js-z__image", { large: this.selectedHero, helperSize: nHsize, animation: 480 } );
+      "doSKUNav": function( direction ){ // Prev / Next SKU Linear Nav (n or -n)
+        var _t = this, oHro = _t.oHeroZmMob, aTN = _t.aThumbnails3, nL = aTN.length;
+        aTN.filter(function( _tn, _nX ){ // Find current Hero
+          if( _tn.img == _t.selectedHero  ) oHro.curTN = _nX;
+        });
+        oHro.curTN = oHro.curTN + direction;
+        if( oHro.curTN == nL ) oHro.curTN = 0;      // max
+        if( oHro.curTN == -1 ) oHro.curTN = (nL-1); // min
+        _t.selectSKU( aTN[oHro.curTN].sku, aTN[oHro.curTN].img, aTN[oHro.curTN].pers );
+      },
+      "doNothing": function( ev ){
+        if( this.oHeroZmMob.isInit ){
+          ev.preventDefault();
+          if( this.oHeroZmMob.isDown ) this.doHeroMobPointMove( ev );
+        }
+      },
+      "doHeroMobScale": function( direction ){ // Mobile Reveal Hero Zoom in/out (.n or -.n)
+        var oHro = this.oHeroZmMob;
+        if( oHro.isInit ){
+          if( ((direction>0) && (oHro.zRatio<4))||((direction<0) && (oHro.zRatio>1)) ){
+            oHro.zRatio = Math.abs(oHro.zRatio + direction);
+          }else{
+            if( !direction ) oHro.zRatio = 1; // reset
+          }
+          oHro.e.style.transform =  "scale("+ oHro.zRatio +")";            
+        } 
+      },
+      "doHeroMobMouseDown": function( ev ){ // Init once
+        var oHro = this.oHeroZmMob;
+        if( !oHro.isInit ){
+          oHro.e = this.$refs["img_HeroZoom_mob"];
+          oHro.isInit = true;
+        }
+        this.oHeroZmMob.isDown = true;
+      },
+      "doHeroMobMouseUp": function( ev ){ // Double Tap
+        var oHro = this.oHeroZmMob;
+        if( oHro.isInit ){
+          if( oHro.doubleTap ){
+            oHro.doubleTap = false;
+            this.doHeroMobScale( .5 ); // Double Tap
+          }else{
+            oHro.doubleTap = true;
+            setTimeout(function(){ vltdc_productdetail.doHeroMobMouseUp_expire() }, 380);
+          }
+        }
+        this.oHeroZmMob.isDown = false;
+      },
+      "doHeroMobMouseUp_expire": function(){ // Single Tap
+        var oHro = this.oHeroZmMob;
+        if( oHro.isInit ){
+          if( oHro.doubleTap ) this.doHeroMobScale( -.5 ); // Single Tap
+          oHro.doubleTap = false;
+        } 
+      },
+      "doHeroMobPointDown": function( ev ){ // Pinch microinteraction
+        var oHro = this.oHeroZmMob;
+        if( oHro.isInit ){
+          oHro.aEv.push( ev );
+          oHro.nEvMouseXY[0] = ev.clientX;
+          oHro.nEvMouseXY[1] = ev.clientY;
+        }
+      },
+      "doHeroMobPointMove": function( ev ){ // Pinch microinteraction
+        var oHro = this.oHeroZmMob;
+        if( oHro.isInit ){
+          oHro.aEv = oHro.aEv.map(function( _ev ){ // Update Event
+            return ( _ev.pointerId === ev.pointerId ) ? ev : _ev;
+          });
+          if( oHro.aEv.length == 2) { // Distance between two pointers
+            var nXYnew = Math.abs(oHro.aEv[0].clientX - oHro.aEv[1].clientX);
+            if( oHro.nXdiff > 16) {
+              if( nXYnew > oHro.nXdiff) this.doHeroMobScale(  1 );
+              if( nXYnew < oHro.nXdiff) this.doHeroMobScale( -1 );
+            }
+            oHro.nXdiff = nXYnew;
+          }
+          if( (oHro.aEv.length == 1) && (oHro.zRatio > 1 ) ){ // Pan Single Pointer
+            oHro.x = (( ev.clientX - oHro.nEvMouseXY[0] ) * oHro.zRatio);
+            oHro.y = (( ev.clientY - oHro.nEvMouseXY[1] ) * oHro.zRatio);
+            oHro.e.style.transform = "translate("+  oHro.x +"px, "+  oHro.y +"px) scale("+ oHro.zRatio +")";
+          }
+        } 
+      },
+      "doHeroMobPointUp": function( ev ){ // Pinch microinteraction
+        var oHro = this.oHeroZmMob;
+        if( oHro.isInit ){
+          oHro.aEv = oHro.aEv.filter(function( _ev ){
+            return ( _ev.pointerId !== ev.pointerId ); });
+          if( oHro.aEv.length < 2 ) oHro.nXdiff = -1; // reset
+        } 
+      },
+      "doHeroMouseEnterRv": function( ev ){ // Mouse Enter within Reveal - Desktop
+        var oHro = this.oHeroZmRv;
+        if( !oHro.isInit ){ // Run once per engagement
+          oHro.e = this.$refs["img_HeroZoomRv"]; oHro.eBg = this.$refs["img_HeroZoom_bgRv"];
+          if( document.body.dataset.brand === "FF" ) oHro.setMtrx = [ -.12, 1.61, -.12, 1.12];
+          oHro.h = oHro.e.offsetHeight * oHro.zMult;
+          oHro.w = oHro.e.offsetWidth * oHro.zMult;
+          oHro.e.alt = "Magnifying "+ this.selectedAlt;
+          oHro.isInit = true;
+  console.log('zm width - ' + oHro.eBg.naturalWidth);
+  console.log('zm height - ' + oHro.eBg.naturalHeight);
+        }
+        oHro.eBg.style.opacity = "0"; oHro.e.style.display = "block";
+      },
+      "doHeroMouseMoveRv": function( ev ){ // Mouse Move over background img in Reveal - Desktop
+        var oHro = this.oHeroZmRv;
+        if( oHro.e ){
+          oHro.x = (oHro.w - (oHro.e.offsetHeight * oHro.setMtrx[0] ))  -  (ev.offsetX * (oHro.zMult * (oHro.zMult-oHro.setMtrx[1])));
+          oHro.y = (oHro.h - (oHro.e.offsetWidth  * oHro.setMtrx[2] ))  -  (ev.offsetY * (oHro.zMult * (oHro.zMult-oHro.setMtrx[3])));
+          oHro.e.style.transform = "translate(" + oHro.x + "px, " + oHro.y + "px) scale("+oHro.zRatio+")";
+        }
+     },
+      "doHeroMouseOutRv": function( ev ){
+        if( this.oHeroZmRv.e ){
+          this.oHeroZmRv.eBg.style.opacity = "1"; this.oHeroZmRv.e.style.display = "none";
+        }
+      },
+      "doHeroMouseEnter": function( ev ){
+      if( this.$refs["img_HeroZoom"] ){
+        var oHro = this.oHeroZm;
+        if( !oHro.isInit ){ // Run once per engagement
+          oHro.e = this.$refs["img_HeroZoom"]; oHro.eBg = this.$refs["img_HeroZoom_bg"];
+          if( document.body.dataset.brand === "FF" ) oHro.setMtrx =[1.38, 3.2, 1.38, 3.4];
+          oHro.h = oHro.e.offsetHeight * oHro.zMult;
+          oHro.w = oHro.e.offsetWidth * oHro.zMult;
+          oHro.e.alt = "Magnifying "+ this.selectedAlt;
+          oHro.isInit = true;
+          
+console.log('zm width - ' + oHro.eBg.naturalWidth);
+console.log('zm height - ' + oHro.eBg.naturalHeight);
+        }
+        oHro.eBg.style.opacity = "0";
+        oHro.e.style.display = "block";
       }
+    },
+    "doHeroMouseMove": function( ev ){
+        var oHro = this.oHeroZm;
+        if( oHro.e ){
+          oHro.x = (oHro.w - (oHro.e.offsetHeight * oHro.setMtrx[0] ))  -  (ev.offsetX * (oHro.zMult * (oHro.zMult/oHro.setMtrx[1])));
+          oHro.y = (oHro.h - (oHro.e.offsetWidth  * oHro.setMtrx[2] ))  -  (ev.offsetY * (oHro.zMult * (oHro.zMult/oHro.setMtrx[3])));
+          oHro.e.style.transform = "translate(" + oHro.x + "px, " + oHro.y + "px) scale("+oHro.zRatio+")";
+        }
+    },
+    "doHeroMouseOut": function( ev ){
+      if( this.oHeroZm.e ){
+        this.oHeroZm.eBg.style.opacity = "1";
+        this.oHeroZm.e.style.display = "none";
+      }
+    },
+    "doHeroClick": function( ev ){
+      if( ev ) ev.preventDefault();
+      if( oTopmenu && !oTopmenu.isMobile() && ltdc_reveal ){
+        ltdc_reveal.autoOpen("pdp_zoom_reveal");
+      }
+    },
+    "doExpColDet": function(){
+      this.aExpColDet[0] = !this.aExpColDet[0];
+      vltdc_productdetail.$forceUpdate();
     },
     doAction: function( jProductDet ){
       if( jProductDet ){
         vltdc_productdetail = this;
         vltdc_productdetail.jResponse =  jProductDet[Object.keys(jProductDet)[0]];
-        vltdc_productdetail.sProdId = "sProd";   // TODO get from json
-        vltdc_productdetail.sBookId = "sBookId"; // TODO get from json
-        vltdc_productdetail.bShowSoldOut = true; // TODO get from location href search
+        vltdc_productdetail.sProdId = "sProd";  
+        vltdc_productdetail.sBookId = "sBookId";
+        vltdc_productdetail.bShowSoldOut = true;
       }
     },
     refresh: function(){
@@ -350,6 +512,7 @@ var vltdc_productdetail = new Vue( {
       }
       if( _sSku == "video" ){
         this.isPlayingVideo = true;
+        vltdc_productdetail.doHeroClick(); // Open reveal to play vid on Desktop
       }else if( this.isPlayingVideo ){
         this.isPlayingVideo = false;
       }
@@ -767,12 +930,18 @@ var vltdc_productdetail = new Vue( {
     this.oFlickHero.select( ( this.nFlickHeroPers ), false, false )  //  Animate Carousel
   },
   bindFlick: function(){
-    if( oTopmenu && oTopmenu.isMobile() ){
+    if( oTopmenu && oTopmenu.isMobile() ){ // Mobile & Tablet
       setTimeout(function(){
         vltdc_productdetail.bFlickHero = true;
         vltdc_productdetail.oFlickHero = new Flickity( "#js-flickHero--id", { pageDots: false, wrapAround: true, cellSelector: ".flickhero__cell", cellAlign: "center", "prevNextButtons": false });
         document.getElementById( "js-flick__hero--id" ).style.display = "block";
         vltdc_productdetail.oFlickHero.resize();
+        vltdc_productdetail.oFlickHero.on( "staticClick", function(){ // Carousel stationary touch
+          if( ltdc_reveal ){
+            ltdc_reveal.autoOpen("pdp_zoom_mob");
+            if( ltdc_snackbar ) setTimeout(function() {ltdc_snackbar.q("Pinch or Double Tap|to Zoom");}, 1400);
+          }
+        } );
       }, 1200);
     }
   },
@@ -860,7 +1029,6 @@ var vltdc_productdetail = new Vue( {
   mounted: function(){
     if(typeof jProductDet != "undefined"){
       setTimeout(function(){ if( oMDPage ) oMDPage.rebind( document.body.dataset.brand ); }, 200);
-      setTimeout(function(){ vltdc_productdetail.zoomzoom(); }, 1200);      
     }
   },
   updated: function( e ){
@@ -870,19 +1038,26 @@ var vltdc_productdetail = new Vue( {
         this.isInit = true;
         if( fSecCards && oTopmenu ){ fSecCards.bind( "ltdc-productdetail .seccard__surface", oTopmenu.isMobile() ); }
       }
+      if( this.$refs["HeroZoom-Mob__tap"] ){
+        setTimeout(function(){ // Remove Tap to Zoom msg
+          vltdc_productdetail.$refs["HeroZoom-Mob__tap"].classList.add("HeroZoom-Mob__tap--swipe");
+        }, 3800);
+      }
     }else{
       if( this.jResponse.childSkus[0].value.isPersonalized ){
         setTimeout(function(){ if( oMDPage ) oMDPage.rebind( document.body.dataset.brand ); }, 200);
       }
+      if( this.$refs["HeroZoom-Mob__tap"] ){
+        setTimeout(function(){ // Remove Tap to Zoom overlay msg
+          vltdc_productdetail.$refs["HeroZoom-Mob__tap"].style.display = "none";
+        }, 7200);
+      }
     }
   }
-} );
+} );  // vue end
 
 if( vltdc_productdetail && (typeof jProductDet != "undefined") ){ vltdc_productdetail.doAction( jProductDet ); }
-window.addEventListener("resize", function(){
-  if( typeof vltdc_productdetail !== "undefined" ){ vltdc_productdetail.zoomzoom(); }
-})
-
+} // holdfast
 var fSecCards = (function(){  //  function for Section Card bound events
   var _eCards;
   return {
@@ -902,283 +1077,6 @@ var fSecCards = (function(){  //  function for Section Card bound events
   };
 })();
 if( fSecCards && oTopmenu ){ fSecCards.bind( "#reviewSummary .seccard__surface", oTopmenu.isMobile() ); }
-
-(function(root) {
-  'use strict';
-  var IE9 = navigator.appVersion.indexOf("MSIE 9.") > -1;
-  var defaultConfig = {
-    helperSize: 150,
-    containHelper: true,
-    containerClass: "zm-container",
-    wrapperClass: "zm-wrapper",
-    previewClass: "zm-preview",
-    customPreviewClass: "zm-custom-preview",
-    imageClass: "zm-image",
-    helperClass: "zm-helper",
-    hoverClass: "zm-hover",
-    fadeInClass: "zm-fade-in",
-    fadeOutClass: "zm-fade-out",
-    activeClass: "zm-active"
-  };
-
-  /* classList shim for IE9 */
-  var classList = {
-    contains: function(a, b) {
-      if ( a )
-        return a.classList ? a.classList.contains(b) : !!a.className && !!a.className.match(new RegExp("(\\s|^)" + b + "(\\s|$)"));
-    },
-    add: function(a, b) {
-      if (!classList.contains(a, b)) {
-        if (a.classList) { a.classList.add(b); } else { a.className = a.className.trim() + " " + b; } }
-    },
-    remove: function(a, b) {
-      if (classList.contains(a, b)) { if (a.classList) { a.classList.remove(b); } else { a.className = a.className.replace(new RegExp("(^|\\s)" + b.split(" ").join("|") + "(\\s|$)", "gi"), " "); }}
-},
-  };
-
-  var transform = function(el, x, y) {
-    if ( IE9 ) {
-      el.style.left = x + "px";
-      el.style.top = y + "px";
-    } else {
-      el.style.transform = "translate3d(" + x + "px, " + y + "px, 0px)";
-    }
-  };
-
-  var extend = function(target, varArgs) {
-    var to = Object(target);
-    for (var index = 1; index < arguments.length; index++) {
-      var nextSource = arguments[index];
-
-      if (nextSource != null) {
-        // Skip over if undefined or null
-        for (var nextKey in nextSource) {
-          // Avoid bugs when hasOwnProperty is shadowed
-          if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-            to[nextKey] = nextSource[nextKey];
-          }
-        }
-      }
-    }
-    return to;
-  };
-
-  var rect = function(el) {
-    var win = window, doc = document, body = doc.body;
-    var r = el.getBoundingClientRect();
-    var x = win.pageXOffset !== undefined ? win.pageXOffset : (doc.documentElement || body.parentNode || body).scrollLeft;
-    var y = win.pageYOffset !== undefined ? win.pageYOffset : (doc.documentElement || body.parentNode || body).scrollTop;
-
-    return {
-      x: r.left + x,
-      y: r.top + y,
-      height: r.height,
-      width: r.width
-    };
-  };
-
-  var debounce = function(func, wait, immediate) {
-    var timeout;
-    return function() {
-      var context = this, args = arguments, later = function() {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  }
-
-  var Zoom = function(el, options) {
-    this.el = typeof el === "string" ? document.querySelector(el) : el;
-    this.config = extend({}, defaultConfig, options || {});
-
-    this.events = {
-      loaded: this.loaded.bind(this),
-      mouseenter: this.mouseenter.bind(this),
-      mousemove: this.mousemove.bind(this),
-      mouseleave: this.mouseleave.bind(this),
-      update: this.update.bind(this)
-    };
-
-    this.events.debounce = debounce(this.events.update, 50);
-    this.ratio = {};
-    this.imageLoaded = false;
-    this.zoomLoaded = false;
-
-    this.initDOM();
-  }
-
-  Zoom.prototype.init = function() {
-
-    this.ratio.x = this.image.width / this.config.helperSize;
-    this.ratio.y = this.image.height / 216;//this.config.helperSize;
-    this.zoomImage.style.width = (this.image.width * this.ratio.x) + "px";
-
-    window.addEventListener("resize", this.events.debounce);
-    this.wrapper.addEventListener("mouseenter", this.events.mouseenter);
-  };
-
-  Zoom.prototype.initDOM = function() {
-
-    var o = this.config;
-    this.wrapper = document.createElement("div");
-    if ( this.el.nodeName !== "IMG" ) {
-
-      this.container = this.el;
-      this.image = document.createElement("img");
-      this.image.src = this.config.small;
-      classList.add(this.image, o.imageClass);
-      this.wrapper.appendChild(this.image);
-
-    } else {
-
-      this.isImage = true;
-      this.container = document.createElement("div");
-      this.image = this.el;
-      classList.add(this.el, o.imageClass);
-
-    }
-    this.zoomImage = document.createElement("img");
-    this.zoomImage.src = o.large;
-    this.zoomImage.alt = "Zoom Magnified Image";
-
-    classList.add(this.container, o.containerClass);
-
-    classList.add(this.wrapper, o.wrapperClass);
-
-    this.helper = document.createElement("div");
-    classList.add(this.helper, o.helperClass);
-
-    if ( o.previewContainer ) {
-      this.customPreview = true;
-      this.previewContainer = document.querySelector(o.previewContainer);
-      classList.add(this.previewContainer, o.customPreviewClass);
-    } else {
-      this.previewContainer = document.createElement("div");
-      this.container.appendChild(this.previewContainer);
-      classList.add(this.previewContainer, o.previewClass);
-    }
-
-    this.previewContainer.appendChild(this.zoomImage);
-    this.container.appendChild(this.wrapper);
-    this.wrapper.appendChild(this.helper);
-    this.el.parentNode.insertBefore(this.container, this.el);
-
-    if ( this.isImage ) {
-      this.wrapper.appendChild(this.el);
-    }
-
-    this.update();
-    this.helper.style.width = this.config.helperSize + "px";
-    this.helper.style.height = this.config.helperSize + "px";
-    this.previewContainer.style.width = this.rect.width + "px",
-    this.previewContainer.style.height = this.rect.height + "px"
-    this.image.addEventListener("load", this.events.loaded);
-    this.zoomImage.addEventListener("load", this.events.loaded);
-  }
-
-  Zoom.prototype.loaded = function(e) {
-    if ( e.target === this.image ) {
-      this.imageLoaded = true;
-    } else {
-      this.zoomLoaded = true;
-    }
-
-    if ( this.imageLoaded && this.zoomLoaded ) {
-      this.init();
-    }
-  };
-
-  Zoom.prototype.mousemove = function(e) {
-    var r = this.rect;
-    var s = this.config.helperSize;
-    var x = e.pageX - r.x - (s / 2);
-    var y = e.pageY - r.y - (s / 2);
-
-    // Limit movement
-    if ( this.config.containHelper ) {
-      if ( x <= 0 ) {
-        x = 0;
-      }
-      if ( x >= r.width - s ) {
-        x = r.width - s;
-      }
-      if ( y <= 0 ) {
-        y = 0;
-      }
-      if ( y >= r.height - s ) {
-        y = r.height - s;
-      }
-    }
-    transform(this.helper, x, y);
-    transform(this.zoomImage, (-x * this.ratio.x), (-y * this.ratio.y));
-  };
-  Zoom.prototype.mouseenter = function(e) {
-    var that = this, o = this.config;
-    if ( o.animation && that.timer ) {
-      clearTimeout(that.timer);
-
-      if ( that.customPreview ) {
-        classList.remove(that.previewContainer, o.fadeOutClass);
-      } else {
-        classList.remove(that.container, o.fadeOutClass);
-      }
-    }
-    classList.add(that.container, o.hoverClass);
-
-    if ( that.customPreview ) {
-      classList.add(that.previewContainer, o.activeClass);
-    }
-    if ( o.animation ) {
-      if ( that.customPreview ) {
-        classList.add(that.previewContainer, o.fadeInClass);
-      } else {
-        classList.add(that.container, o.fadeInClass);
-      }
-    }
-    that.wrapper.addEventListener("mousemove", that.events.mousemove);
-    that.wrapper.addEventListener("mouseleave", that.events.mouseleave);
-  };
-
-  Zoom.prototype.mouseleave = function(e) {
-    var that = this, o = this.config;
-    if ( o.animation ) {
-      if ( that.customPreview ) {
-        classList.remove(that.previewContainer, o.fadeInClass);
-        classList.add(that.previewContainer, o.fadeOutClass);
-      } else {
-        classList.remove(that.container, o.fadeInClass);
-        classList.add(that.container, o.fadeOutClass);
-      }
-      that.timer = setTimeout(function() {
-        classList.remove(that.container, o.hoverClass);
-        classList.remove(that.container, o.fadeOutClass);
-
-        if ( that.customPreview ) {
-          classList.remove(that.previewContainer, o.fadeOutClass);
-          classList.remove(that.previewContainer, o.activeClass);
-        } else {
-          classList.remove(that.container, o.fadeOutClass);
-        }
-        that.timer = false;
-      }, 250);
-    } else {
-      classList.remove(that.container, o.hoverClass);
-      if ( that.customPreview ) {
-        classList.remove(that.previewContainer, o.activeClass);
-      }
-    }
-    that.wrapper.removeEventListener("mousemove", that.events.mousemove);
-    that.wrapper.removeEventListener("mouseleave", that.events.mouseleave);
-  };
-  Zoom.prototype.update = function() {
-    this.rect = rect(this.container);
-  };
-  root.Zoom = Zoom;
-}(this));
 
 function letterCounter (x) {
   return x.replace(/[^a-zA-Z]/g, '').length;
