@@ -1,6 +1,12 @@
 # Oscillation Overthruster
 Oscillation Overthruster
 
+<p align="center">
+  <a target="_blank" href="https://thescottkrause.com/d3_datavis_skills.html">
+  <img src="https://raw.githubusercontent.com/neodigm/Oscillation-Overthruster/master/Oscillation-Overthruster.webp" title="D3js Skills with Audio">
+  </a>
+</p>
+
 ```javascript
     let fCycle = ( (_d, _q, _t) => {  //  Cycle content display
         let aCycCnt = [..._d.querySelectorAll( _q )];
