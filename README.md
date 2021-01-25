@@ -1,5 +1,37 @@
 # Oscillation Overthruster
-Oscillation Overthruster 🗿 Flux Capacitor
+
+<details>
+    <summary>Oscillation Overthruster 🗿 Flux Capacitor</summary>
+<p align="center">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvc.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vva.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvt.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvn.svg" width="33" alt="Vivid Vector Skulduggery">
+</p>
+  
+ <p align="center">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvv.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vve.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvr.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvt.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvh.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvr.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvu.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvt.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vve.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvr.svg" width="33" alt="Vivid Vector Skulduggery">
+</p>
+</details>
+
 
 <p align="center">
   <a target="_blank" href="https://thescottkrause.com/d3_datavis_skills.html" title="D3js Skills with Audio">
