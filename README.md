@@ -1,7 +1,7 @@
 # Oscillation Overthruster
 
 <details>
-    <summary>Oscillation Overthruster 🗿 Flux Capacitor</summary>
+    <summary open>Oscillation Overthruster 🗿 Flux Capacitor</summary>
 <p align="center">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid Vector Skulduggery">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Vivid Vector Skulduggery">
