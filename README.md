@@ -4,9 +4,9 @@
     <summary open>Oscillation Overthruster 🗿 Flux Capacitor</summary>
 <p align="center">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid Vector Skulduggery">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Vivid Vector Skulduggery">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvc.svg" width="33" alt="Vivid Vector Skulduggery">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Electra Glide safron">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvc.svg" width="33" alt="ginger stratagem">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="tapestry Inventive">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="Vivid Vector Skulduggery">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="Vivid Vector Skulduggery">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vva.svg" width="33" alt="Vivid Vector Skulduggery">
