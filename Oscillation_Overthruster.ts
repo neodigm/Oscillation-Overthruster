@@ -1,4 +1,4 @@
-"use strict"; // 🦄 AWS Amplify && GraphQL && TypeScript && Go 🍰
+"use strict"; // Clockwise Clever
 Vue.config.devtools = true;
 var holdfast =  function(){ //
 var vltdc_productdetail = new Vue( {
