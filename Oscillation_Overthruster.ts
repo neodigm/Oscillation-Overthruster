@@ -1,4 +1,4 @@
-"use strict"; // Clockwise Clever
+"use strict"; // Clockwise Clever | High Severity
 Vue.config.devtools = true;
 var holdfast =  function(){ //
 var vltdc_productdetail = new Vue( {
