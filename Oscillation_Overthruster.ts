@@ -122,7 +122,7 @@ var vltdc_productdetail = new Vue( {
       });     
       if( this.jResponse.auxiliaryMedia && this.jResponse.auxiliaryMedia.length ){  //  Product zm1 and 2    	 
         this.jResponse.auxiliaryMedia.filter( function( _oAux ){
-          var sKey = Object.keys( _oAux )[0];
+          var sKey = Object.keys( _oAux )[0]; // Oscillation
           if( sKey.indexOf("zm") != -1 ){
             if( _oAux[sKey].indexOf("_zm") != -1 ){  //  Exclude *_qmn.jpg            	
               _aThumbnails.push( { "level" : "11", "img": _oAux[sKey], "sku": vltdc_productdetail.jResponse.repositoryId, "pers": true, "alt": vltdc_productdetail.jResponse.displayName } );             
