@@ -23,7 +23,7 @@ var vltdc_productdetail = new Vue( {
     selectedPickr2SKU: {},
     sProdId: "",
     sBookId: "",
-    C2AMicrocopy: "",
+    C2AMicrocopy: "Add to Cart",
     bShowSoldOut: false,
     isLessThan4: true,
     isPlayingVideo: false,
