@@ -25,7 +25,7 @@ var vltdc_productdetail = new Vue( {
     sBookId: "",
     C2AMicrocopy: "",
     bShowSoldOut: false,
-    isLessThan4: false,
+    isLessThan4: true,
     isPlayingVideo: false,
     calcPriceLine1: "",
     calcPriceLine2: "",
