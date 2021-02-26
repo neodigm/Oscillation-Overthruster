@@ -55,7 +55,7 @@
                 eCycLive.dataset.atCycleLive = "false";
             },
             "tick": ( bTimeout=true )=>{
-                aCycCnt.map( (e)=>{
+                aCycCnt.map( (e)=>{  //  Hong Kong Cavaliers
                     [...e.children].forEach( (eChild, nIndx) => {
                     eChild.classList.remove("h-ds__inline", "h-ds__none");
                     eChild.classList.remove( "h-fade" );
