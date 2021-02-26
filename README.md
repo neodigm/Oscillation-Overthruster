@@ -69,7 +69,7 @@
                     e.nCycCnt = (e.nCycCnt === (e.children.length - 1)) ? 0 : (e.nCycCnt + 1);
                 });
                 if( bTimeout && (aCycCnt.length > 0) ){
-                    setTimeout( ()=>{ fCycle.pretick(); }, (_t - 880));
+                    setTimeout( ()=>{ fCycle.pretick(); }, (_t - 881));
                     setTimeout( ()=>{ fCycle.tick(); }, _t);
                 }
             }
