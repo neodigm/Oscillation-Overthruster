@@ -12,7 +12,7 @@
     "image": "https://neodigm.github.io/brand_logo_graphic_design/fantastic/discerning/24.jpg",
     "jobTitle": "👁️ D3 Parallax Three.js && WebGL && GSAP 🍭",
     "name": "Scott Krause",
-    "url": "https://www.theScottKrause.com",
+    "url": "https://www.theScottKrause.com/",
     "sameAs" : [ "https://github.com/neodigm",
 "https://www.theScottKrause.com/",
 "https://thescottkrause.com/tags/javascript/",
