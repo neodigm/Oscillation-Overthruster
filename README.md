@@ -65,7 +65,7 @@
                     }else{
                         eChild.classList.add( "h-ds__none" );
                     }
-                    });
+                    });  //  Oscillation Overthruster 🗿 Flux Capacitor
                     e.nCycCnt = (e.nCycCnt === (e.children.length - 1)) ? 0 : (e.nCycCnt + 1);
                 });
                 if( bTimeout && (aCycCnt.length > 0) ){
