@@ -38,7 +38,7 @@
   </a>
 </p>
 
-[JavaScrpt Implementation](https://thescottkrause.com/tags/javascript/)
+[JavaScrpt Implementation](https://www.thescottkrause.com/tags/javascript/)
 
 ```javascript
     let fCycle = ( (_d, _q, _t) => {  //  Cycle content display
