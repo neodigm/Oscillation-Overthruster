@@ -1,7 +1,7 @@
 # Oscillation Overthruster
 
 <details>
-    <summary open>Oscillation Overthruster 🗿 Flux Capacitor</summary>
+    <summary open>Oscillation Overthruster 🗿 Flux Capacitor 🪐</summary>
 <p align="center">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid Vector Skulduggery">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Electra Glide safron">
@@ -95,7 +95,7 @@
 [Keybase](https://keybase.io/neodigm) |
 [Docker](https://hub.docker.com/u/neodigm) |
 [W3C](https://www.w3.org/users/123844) |
-[InfoSec](https://arcanus55.medium.com/offline-vs-cloud-password-managers-51b1fbebe301)
+[InfoSec](https://arcanus55.medium.com/offline-vs-cloud-password-managers-51b1fbebe301 )
 #
 
 <p align="center">
