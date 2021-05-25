@@ -8,7 +8,7 @@
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvc.svg" width="33" alt="ginger stratagem">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="tapestry Inventive">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="when information grows unprofitable">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="Crave Breathtaking">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="Crave Breathtaking DataVis 🚀 Micro Frontend 🚀 PWA">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vva.svg" width="33" alt="Delirious Stunning">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvt.svg" width="33" alt="Life-changing Gorgeous">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="Ironclad Brilliant">
