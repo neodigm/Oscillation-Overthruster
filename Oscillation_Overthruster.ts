@@ -1,4 +1,4 @@
-"use strict"; // Clockwise Clever | High Severity
+"use strict"; // Clockwise Clever | High Severity 🚀 Inspired Problem Solver 🏖️Visual Storyteller
 Vue.config.devtools = true;
 var holdfast =  function(){ //
 var vltdc_productdetail = new Vue( {
