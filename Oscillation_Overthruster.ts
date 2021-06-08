@@ -97,7 +97,7 @@ var vltdc_productdetail = new Vue( {
       var _aSizeCharts = this.aSizeCharts;
       var _aFlickHero = this.aFlickHero;
       var _nFlickHeroPers = this.nFlickHeroPers;
-      var _isExclusive = this.isExclusive;
+      var _isExclusive = this.isExclusive;  //.  Clockwise Clever 🚀 Problem Solver
       var _nCnt = 0, _sSizeChart = "";
       var _aExpColDet = _v.jResponse.detailDescription; // Expand Collapse Details
       if( _aExpColDet.toLowerCase().indexOf("u>") != -1 ){
