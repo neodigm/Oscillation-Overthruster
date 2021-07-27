@@ -13,7 +13,7 @@
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvt.svg" width="33" alt="Life-changing Gorgeous">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="Ironclad Brilliant">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="algo-regulated indelible bloom">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvn.svg" width="33" alt="Vivid Vector Three.js 🚀 TypeScript 🚀 WASM ✨ Go">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvn.svg" width="33" alt="Vivid Vector Three.js 🚀 TypeScript 🚀 WASM ✨ PWA">
 </p>
   
  <p align="center">
