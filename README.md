@@ -17,7 +17,7 @@
 </p>
   
  <p align="center">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvv.svg" width="33" alt="UX artisan ⚡ illustrator ⚡ front-end engineer">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vve.svg" width="33" alt="👁️ D3 Parallax Three.js && WebGL && GSAP 🍭">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvr.svg" width="33" alt="Vivid Vector Skulduggery">
@@ -109,6 +109,6 @@
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/neodigm/vue_voyagers)
 <p align="center">
   <a target="_blank" href="https://www.thescottkrause.com">
-    <img src="https://neodigm.github.io/pan-fried-monkey-fisticuffs/thescottkrause_contact_card.png" title="DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS">
+    <img src="https://neodigm.github.io/pan-fried-monkey-fisticuffs/thescottkrause_contact_card.png" title="TypeScript ⚡ WASM ✨ NestJS">
   </a>
 </p>
