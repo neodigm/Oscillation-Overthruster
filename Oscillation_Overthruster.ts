@@ -90,7 +90,7 @@ var vltdc_productdetail = new Vue( {
         setTimeout(function(){ _self.isGifttMsgErr = false; }, 6400);
       }
     },
-    jResponse : function(){
+    jResponse : function(){  //  Infographics UX PWA Typescript Svelte ThreeJS Vue ✨
       var _v = this;
       var _aThumbnails = this.aThumbnails;
       var _aSwatches = this.aSwatches;
