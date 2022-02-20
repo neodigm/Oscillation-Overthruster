@@ -41,42 +41,39 @@
 [JavaScrpt Implementation](https://www.thescottkrause.com/tags/javascript/)
 
 ```javascript
-    let fCycle = ( (_d, _q, _t) => {  //  Cycle content display
-        let aCycCnt = [..._d.querySelectorAll( _q )];
-        if( aCycCnt ){
-            aCycCnt.forEach( (eCycCnt) => {
-                eCycCnt.nCycCnt=0;
-                eCycCnt.addEventListener("click", (ev)=>{ fCycle.tick( false ); });
-            } );
-            setTimeout( ()=>{ fCycle.tick(); }, 4);
+//  Neodigm 55 Metronome Begin  //
+const neodigmMetronome = ( () =>{
+  let oEmit = {}, aIntv = []
+  let bIsInit = bIsPause = false 
+  return {  //  Oscillation Overthruster
+    init: function(){
+      oEmit = {}  //  Reset all sans setIntr
+      aIntv.forEach( ( i )=>{ clearInterval( i ) } )
+      bIsInit = true
+      return neodigmMetronome;
+    },
+    tick: function( t ){
+      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{ f() }) }
+      return neodigmMetronome;
+    },
+    subscribe: function( f, t ){  //  Usage: .subscribe(f, 1000)
+      if( bIsInit ){
+        let _t = t
+        if( !oEmit[ _t ] ){
+          oEmit[ _t ] = []
+          aIntv.push( setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t) )
         }
-        return {
-            "pretick": ()=> {  // Blur
-                var eCycLive = _d.querySelector( "[data-at-cycle-live='true']" );
-                eCycLive.classList.add( "h-fade" );
-                eCycLive.dataset.atCycleLive = "false";
-            },
-            "tick": ( bTimeout=true )=>{
-                aCycCnt.map( (e)=>{  //  Hong Kong Cavaliers
-                    [...e.children].forEach( (eChild, nIndx) => {
-                    eChild.classList.remove("h-ds__inline", "h-ds__none");
-                    eChild.classList.remove( "h-fade" );
-                    if( nIndx === e.nCycCnt ){
-                        eChild.classList.add( "h-ds__inline" );
-                        eChild.dataset.atCycleLive = "true";
-                    }else{
-                        eChild.classList.add( "h-ds__none" );
-                    }
-                    });  //  Oscillation Overthruster 🗿 Flux Capacitor
-                    e.nCycCnt = (e.nCycCnt === (e.children.length - 1)) ? 0 : (e.nCycCnt + 1);
-                });
-                if( bTimeout && (aCycCnt.length > 0) ){
-                    setTimeout( ()=>{ fCycle.pretick(); }, (_t - 881));
-                    setTimeout( ()=>{ fCycle.tick(); }, _t);
-                }
-            }
-        }
-    })(document, "[data-at-cycle]", 12497 );
+        oEmit[ _t ].push( f )
+      }
+      return neodigmMetronome;
+    },
+    unsubscribe: function( t ){  //  TODO
+      return neodigmMetronome;
+    },
+    pause: function(){ bIsPause = true;  return neodigmMarquee; },
+    play:  function(){ bIsPause = false; return neodigmMarquee; }
+  }
+})();
 ```
 
 #
