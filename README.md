@@ -28,7 +28,7 @@
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Vivid Vector UX artisan ⚡ illustrator ⚡ front-end engineer">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvt.svg" width="33" alt="Vivid Vector Creative ⚡ Business ⚡ Technical Agility">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vve.svg" width="33" alt="😎 Oscillation Overthruster 🪐">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvr.svg" width="33" alt="Effortless Unexpected">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvr.svg" width="33" alt="Effortless Unexpected DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS ✨ Vue  🚀 Svelte">
 </p>
 </details>
 
@@ -41,7 +41,7 @@
 [JavaScrpt Implementation](https://www.thescottkrause.com/tags/javascript/)
 
 ```javascript
-//  Neodigm 55 Metronome Begin  //
+//  Neodigm 55 Metronome Begin  // DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS ✨ Vue  🚀 Svelte
 const neodigmMetronome = ( () =>{
   let oEmit = {}, aIntv = []
   let bIsInit = bIsPause = false 
@@ -106,6 +106,6 @@ const neodigmMetronome = ( () =>{
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/neodigm/vue_voyagers)
 <p align="center">
   <a target="_blank" href="https://www.thescottkrause.com">
-    <img src="https://neodigm.github.io/pan-fried-monkey-fisticuffs/thescottkrause_contact_card.png" title="TypeScript ⚡ WASM ✨ NestJS">
+    <img src="https://neodigm.github.io/pan-fried-monkey-fisticuffs/thescottkrause_contact_card.png" title="TypeScript ⚡ WASM ✨ DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS ✨ Vue  🚀 Svelte">
   </a>
 </p>
