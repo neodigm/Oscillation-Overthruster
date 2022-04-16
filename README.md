@@ -78,6 +78,7 @@ const neodigmMetronome = ( () =>{
 
 #
 [Portfolio Blog](https://www.theScottKrause.com) |
+[Open Source UX](https://thescottkrause.com/emerging_tech/neodigm55_ux_library/) |
 [🚀 Résumé](https://www.thescottkrause.com/Arcanus_Scott_C_Krause_2022.pdf) |
 [NPM](https://www.npmjs.com/~neodigm) |
 [Github](https://github.com/neodigm) |
