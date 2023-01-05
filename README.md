@@ -88,7 +88,7 @@ const neodigmMetronome = ( () =>{
 [Salesforce](https://trailblazer.me/id/skrause) |
 [Code Pen](https://codepen.io/neodigm24) |
 [Machvive](https://machvive.com/) |
-[Arcanus 55](https://www.arcanus55.com/) |
+[Arcanus 55](https://www.arcanus55.com/?trusted55=A55PV2) |
 [Repl](https://repl.it/@neodigm) |
 [Twitter](https://twitter.com/neodigm24) |
 [Docker](https://hub.docker.com/u/neodigm) |
