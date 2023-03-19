@@ -38,7 +38,7 @@
   </a>
 </p>
 
-[JavaScrpt Implementation](https://www.thescottkrause.com/tags/javascript/)
+[JavaScrpt Implementation](https://www.thescottkrause.com/tags/javascript/) [Neodigm 55 Metronone](https://github.com/arcanus55/neodigm55)
 
 ```javascript
 //  Neodigm 55 Metronome Begin  // DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS ✨ Vue  🚀 Svelte
@@ -46,31 +46,45 @@ const neodigmMetronome = ( () =>{
   let oEmit = {}, aIntv = []
   let bIsInit = bIsPause = false 
   return {  //  Oscillation Overthruster
-    init: function(){
-      oEmit = {}  //  Reset all sans setIntr
-      aIntv.forEach( ( i )=>{ clearInterval( i ) } )
+    init: function(){  //  Reset all
+      oEmit = {}
+      aIntv.forEach( ( i )=>{ clearInterval( i[0] ) } )
       bIsInit = true
       return neodigmMetronome;
     },
     tick: function( t ){
-      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{ f() }) }
+      if( bIsInit && !bIsPause ){ oEmit[ t ].forEach( ( f )=>{
+        if( oEmit[ t ].mx || oEmit[ t ].mx == 0 ){
+          if( oEmit[ t ].mx ){ f( --oEmit[ t ].mx ) }
+        }else{ f() }
+      } ) }
       return neodigmMetronome;
     },
-    subscribe: function( f, t ){  //  Usage: .subscribe(f, 1000)
+    subscribe: function( f, t, mx ){  //  Usage: .subscribe(f, 1000, 5)
+      let _t = t
       if( bIsInit ){
-        let _t = t
         if( !oEmit[ _t ] ){
           oEmit[ _t ] = []
-          aIntv.push( setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t) )
+          aIntv.push( [setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t ), t] )
         }
         oEmit[ _t ].push( f )
+        if( mx ) oEmit[ _t ].mx = mx
       }
       return neodigmMetronome;
     },
-    unsubscribe: function( t ){  //  TODO
+    unsubscribe: function( t ){ 
+      oEmit[ t ] = null;
+      aIntv = aIntv.filter( ( i )=>{
+        if( i[1] == t ){clearInterval( i[0] ); return false; }
+        return true;
+      } )
       return neodigmMetronome;
     },
-    pause: function(){ bIsPause = true;  return neodigmMarquee; },
+    pause: function( nT ){
+      bIsPause = true;
+      if( nT ) setTimeout( neodigmMetronome.play, nT )
+      return neodigmMarquee; },
+    isPaused: function(){ return bIsPause },
     play:  function(){ bIsPause = false; return neodigmMarquee; }
   }
 })();
