@@ -3,7 +3,7 @@
 <details>
     <summary open>Oscillation Overthruster 🗿 Flux Capacitor 🪐</summary>
 <p align="center">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid Vector Skulduggery">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid TypeScript ⚡ WASM ✨ PWA 🍭 ThreeJS">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Electra Glide safron">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvc.svg" width="33" alt="ginger stratagem">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="tapestry Inventive">
@@ -96,6 +96,7 @@ const neodigmMetronome = ( () =>{
 [🦄 Résumé](https://thescottkrause.com/Arcanus_Scott_C_Krause_2023.pdf) |
 [UX micro-library](https://thescottkrause.com/emerging_tech/neodigm55_ux_library/) |
 [PWA WASM](https://www.thescottkrause.com/emerging_tech/curated-pwa-links/) |
+[DevToys](https://www.thescottkrause.com/devtoys/) |
 [Neodigm UX Wiki](https://github.com/arcanus55/neodigm55/wiki/Cheat-Sheet) | 
 [NPM](https://www.npmjs.com/~neodigm) |
 [Github](https://github.com/neodigm) |
