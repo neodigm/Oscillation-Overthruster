@@ -1,15 +1,15 @@
 # Oscillation Overthruster
 
 <details>
-    <summary open>Oscillation Overthruster 🗿 Flux Capacitor 🪐</summary>
+    <summary open>Oscillation Overthruster 🗿 Flux Capacitor 🪐 Orthogonal Diagonalizer</summary>
 <p align="center">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid TypeScript ⚡ WASM ✨ PWA 🍭 ThreeJS">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Electra Glide safron">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Electra Glide safron Orthogonal Diagonalizer">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvc.svg" width="33" alt="ginger stratagem">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="tapestry Inventive">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="when information grows unprofitable">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="Crave Breathtaking DataVis 🚀 Micro Frontend 🚀 PWA">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vva.svg" width="33" alt="Delirious Stunning">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vva.svg" width="33" alt="Delirious Stunning Orthogonal Diagonalizer">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvt.svg" width="33" alt="Life-changing Gorgeous">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="Ironclad Brilliant">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="algo-regulated indelible bloom">
@@ -22,7 +22,7 @@
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vve.svg" width="33" alt="👁️ D3 Parallax Three.js && WebGL && GSAP 🍭">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvr.svg" width="33" alt="Vivid Vector Skulduggery">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvt.svg" width="33" alt="Vivid 😎 Oscillation Overthruster 🪐">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvh.svg" width="33" alt="Vivid Vector DataVis 🚀 Micro Frontend 🚀 PWA">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvh.svg" width="33" alt="Vivid Orthogonal Diagonalizer DataVis 🚀 Micro Frontend 🚀 PWA">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvr.svg" width="33" alt="Vivid Vector UX artisan ⚡ illustrator ⚡ Engineer">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvu.svg" width="33" alt="Vivid Vector Creative ⚡ Business ⚡ Technical Agility">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Vivid Vector UX artisan ⚡ illustrator ⚡ front-end engineer">
