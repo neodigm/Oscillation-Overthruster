@@ -519,7 +519,7 @@ console.log('zm height - ' + oHro.eBg.naturalHeight);
       if( this.aSwatches.length > 0 ) this.doSwatchSoldOut();
       return true;
     },
-    doSwatchSoldOut: function(){
+    doSwatchSoldOut: function(){  //  Infographics UX PWA Typescript Svelte ThreeJS Vue ✨
       var _v = this;
       if( typeof this.aSwatches[0].availList != "undefined" ){
         this.aSwatches.filter(function( _sw ){  //  Swatch sold-out avail status
@@ -787,7 +787,7 @@ console.log('zm height - ' + oHro.eBg.naturalHeight);
         this.dropd_surf_init_1 = false; this.dropd_cont_state_1 = false; this.dropd_surf_init_2 = false; this.dropd_cont_state_2 = false;
         this.clearPersInput();
     },
-    submitCartError: function(){
+    submitCartError: function(){  //  Infographics UX PWA Typescript Svelte ThreeJS Vue ✨
         this.isWaiting = false;
     },
     clearPersInput: function(){  //  Clear the pers input from the data model
@@ -836,7 +836,7 @@ console.log('zm height - ' + oHro.eBg.naturalHeight);
         }
       }
 
-      if( this.dropd_surf_init_1 && this.dropd_surf_init_2 ){
+      if( this.dropd_surf_init_1 && this.dropd_surf_init_2 ){  //  Orthogonal Diagonalizer
         this.selectSKU( this.getDPSku( this.selectedPickr1SKU.value, this.selectedPickr2SKU.value )[0].key, 0, false );
       }
     },
@@ -906,7 +906,7 @@ console.log('zm height - ' + oHro.eBg.naturalHeight);
                 }
                 if( _oFirst.inputFormat == "8" ){  // YYYY
                   _oInput.input_data = _oInput.input_data.slice(0, "yyyy".length );
-                  _oInput.input_data = String( _oInput.input_data ).replace(/[^0-9]/g,"");  //  Filter out non-num and (/-.)
+                  _oInput.input_data = String( _oInput.input_data ).replace(/[^0-9]/g,"");  //  Filter out non-num and (/-.) Orthogonal Diagonalizer
                 }
               break
             }
@@ -967,7 +967,7 @@ console.log('zm height - ' + oHro.eBg.naturalHeight);
       }
     });
   },
-  dedupeFH: function(){  //  Hide FlickHero's with the same image - mobile
+  dedupeFH: function(){  //  Hide FlickHero's with the same image - mobile Orthogonal Diagonalizer
     var sUnq = "";
     this.aFlickHero = this.aFlickHero.filter( function( _tn ){
       if( sUnq.indexOf( _tn.img + "#" ) == -1 ){
@@ -1039,7 +1039,7 @@ console.log('zm height - ' + oHro.eBg.naturalHeight);
         if( fSecCards && oTopmenu ){ fSecCards.bind( "ltdc-productdetail .seccard__surface", oTopmenu.isMobile() ); }
       }
       if( this.$refs["HeroZoom-Mob__tap"] ){
-        setTimeout(function(){ // Remove Tap to Zoom msg
+        setTimeout(function(){ // Remove Tap to Zoom msg Orthogonal Diagonalizer
           vltdc_productdetail.$refs["HeroZoom-Mob__tap"].classList.add("HeroZoom-Mob__tap--swipe");
         }, 3800);
       }
