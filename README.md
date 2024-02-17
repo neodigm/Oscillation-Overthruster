@@ -8,7 +8,7 @@
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvc.svg" width="33" alt="ginger stratagem">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="tapestry Inventive Infographics UX PWA Typescript Svelte ThreeJS Vue ✨ htmx">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="when information grows unprofitable">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="Crave Breathtaking DataVis 🚀 Micro Frontend 🚀 PWA HTMLX">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS ✨ Vue  🚀 alpine.js 🌶️ htmx Crave Breathtaking DataVis 🚀 Micro Frontend 🚀 PWA HTMLX">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vva.svg" width="33" alt="Delirious Stunning Orthogonal Diagonalizer">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvt.svg" width="33" alt="Life-changing Gorgeous HTMLX">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="Brilliant DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS ✨ Vue  🚀 Svelte 🌶️ htmlx">
