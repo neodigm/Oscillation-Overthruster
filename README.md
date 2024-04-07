@@ -41,7 +41,7 @@
 [JavaScrpt Implementation](https://www.thescottkrause.com/tags/javascript/) [Neodigm 55 Metronone](https://github.com/arcanus55/neodigm55)
 
 ```javascript
-//  Neodigm 55 Metronome Begin  // DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS ✨ Vue  🚀 Svelte
+//  Neodigm 55 Metronome Begin  // DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS ✨ Vue  🚀 Lit Web Components
 const neodigmMetronome = ( () =>{
   let oEmit = {}, aIntv = []
   let bIsInit = bIsPause = false 
@@ -50,6 +50,74 @@ const neodigmMetronome = ( () =>{
       oEmit = {}
       aIntv.forEach( ( i )=>{ clearInterval( i[0] ) } )
       bIsInit = true
+      if( neodigmOpt.neodigmWWInterval ){ 
+        (function(){
+          let n55Timr;
+          function createWorker(){
+              let fWorkerSource = function(){
+                  let idMap = {};
+                  self.onmessage = function( e ){
+                      if (e.data.type === 'setInterval'){
+                          idMap[ e.data.id ] = setInterval(function(){
+                              self.postMessage({ type: 'tick', id: e.data.id });
+                          }, e.data.delay);
+                      } else if (e.data.type === 'clearInterval'){
+                          clearInterval(idMap[ e.data.id ]);
+                          delete idMap[ e.data.id ];
+                      } else if (e.data.type === 'setTimeout'){
+                          idMap[ e.data.id ] = setTimeout(function(){
+                              self.postMessage({ type: 'tick', id: e.data.id });
+                              delete idMap[ e.data.id ];
+                          }, e.data.delay);
+                      } else if (e.data.type === 'clearCallback'){
+                          clearTimeout(idMap[ e.data.id ]);
+                          delete idMap[ e.data.id ];
+                      }
+                  };
+              };
+              return new Worker(URL.createObjectURL(new Blob([
+                  '(',
+                  fWorkerSource.toString(),
+                  ')();'
+              ], {type: 'application/javascript'})));
+          }
+          n55Timr = { worker: createWorker(), idToCallback: {}, currentId: 0};
+          function generateId(){ return n55Timr.currentId++ }
+          function overloadSetInterval(callback, delay){
+              let intervalId = generateId();
+              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~MetroN55 setI | " + delay, callback )
+              n55Timr.idToCallback[ intervalId ] = callback;
+              n55Timr.worker.postMessage({ type: 'setInterval', delay: delay, id: intervalId });
+              return intervalId;
+          }
+          function overloadClearInterval( intervalId ){
+              n55Timr.worker.postMessage({ type: 'clearInterval', id: intervalId });
+              delete n55Timr.idToCallback[ intervalId ];
+          }
+          function overloadSetTimeout(callback, delay){
+              if( neodigmOpt.N55_DEBUG_lOG ) console.log( "~MetroN55 setT | " + delay, callback )
+              let intervalId = generateId();
+              n55Timr.idToCallback[ intervalId ] = function(){
+                callback();
+                delete n55Timr.idToCallback[ intervalId ];
+              };
+              n55Timr.worker.postMessage({ type: 'setTimeout', delay: delay, id: intervalId });
+              return intervalId;
+          }
+          function overloadClearTimeout( intervalId ){
+              n55Timr.worker.postMessage({ type: 'clearInterval', id: intervalId });
+              delete n55Timr.idToCallback[ intervalId ];
+          }
+          n55Timr.worker.onmessage = function(e){
+              if (e.data.type === 'tick'){
+                  if( typeof n55Timr.idToCallback[ e.data.id ] == "function" ) n55Timr.idToCallback[ e.data.id ]();
+              }
+          };
+          window.n55Timr = n55Timr;
+          window.setTimeoutN55 = overloadSetTimeout; window.clearTimeoutN55 = overloadClearTimeout;
+          window.setIntervalN55 = overloadSetInterval; window.clearIntervalN55 = overloadClearInterval;
+        })();
+      }
       return neodigmMetronome;
     },
     tick: function( t ){
@@ -62,7 +130,7 @@ const neodigmMetronome = ( () =>{
     },
     subscribe: function( f, t, mx ){  //  Usage: .subscribe(f, 1000, 5)
       let _t = t
-      if( bIsInit ){
+      if( bIsInit && !oEmit[ _t ] ){ // prevent overwright
         if( !oEmit[ _t ] ){
           oEmit[ _t ] = []
           aIntv.push( [setInterval( ()=>{ neodigmMetronome.tick( _t ) }, _t ), t] )
@@ -83,9 +151,9 @@ const neodigmMetronome = ( () =>{
     pause: function( nT ){
       bIsPause = true;
       if( nT ) setTimeout( neodigmMetronome.play, nT )
-      return neodigmMarquee; },
+      return neodigmMetronome; },
     isPaused: function(){ return bIsPause },
-    play:  function(){ bIsPause = false; return neodigmMarquee; }
+    play:  function(){ bIsPause = false; return neodigmMetronome; }
   }
 })();
 ```
