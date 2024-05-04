@@ -148,7 +148,7 @@ const neodigmMetronome = ( () =>{
       } )
       return neodigmMetronome;
     },
-    pause: function( nT ){
+    pause: function( nT ){  //  UX PWA WASM LIT Web Component
       bIsPause = true;
       if( nT ) setTimeout( neodigmMetronome.play, nT )
       return neodigmMetronome; },
@@ -161,7 +161,7 @@ const neodigmMetronome = ( () =>{
 ---
 #
 [Portfolio Blog](https://www.theScottKrause.com) |
-[🌶️ Résumé](https://thescottkrause.com/Arcanus_Scott_C_Krause_2023.pdf) |
+[🌶️ Résumé](https://thescottkrause.com/Arcanus_Scott_C_Krause_2024.pdf) |
 [UX micro-library](https://thescottkrause.com/emerging_tech/neodigm55_ux_library/) |
 [PWA WASM](https://www.thescottkrause.com/emerging_tech/curated-pwa-links/) |
 [Web Tool Toys](https://www.webtooltoys.com/) |
