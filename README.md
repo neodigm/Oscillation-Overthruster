@@ -27,7 +27,7 @@
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvu.svg" width="33" alt="Vivid Vector Creative ⚡ Business ⚡ Technical Agility">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Vivid Vector UX artisan ⚡ illustrator ⚡ front-end engineer">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvt.svg" width="33" alt="Vivid Vector Creative ⚡ Business ⚡ Technical Agility">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vve.svg" width="33" alt="😎 Oscillation Overthruster 🪐">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vve.svg" width="33" alt="😎 Oscillation Overthruster 🪐 DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS ✨ Vue  🚀 SSE 🌶️ htmx">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvr.svg" width="33" alt="Effortless Unexpected DataVis 👁️ UX 🍭 PWA 👁️ ThreeJS ✨ Vue  🚀 Svelte">
 </p>
 </details>
