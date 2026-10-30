@@ -4,7 +4,7 @@
     <summary open>Oscillation Overthruster 🗿 Flux Capacitor 🪐 Orthogonal Diagonalizer 👁️ Protomolecule</summary>
 <p align="center">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvo.svg" width="33" alt="Vivid TypeScript ⚡ WASM ✨ PWA 🍭 ThreeJS Protomolecule">
-<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="Electra Glide safron Orthogonal Diagonalizer Protomolecule">
+<img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvs.svg" width="33" alt="MCP AI Agents Chat UX PWA 3D ThreeJS LLM ✨ HTMX Rust WASM 🌶️ MachVive webMCP✨ Vercel">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvc.svg" width="33" alt="ginger stratagem">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvi.svg" width="33" alt="tapestry Inventive Infographics UX PWA Typescript Svelte ThreeJS Vue ✨ htmx">
 <img src="https://neodigm.github.io/vivid_vector_alphabet/wasm/vvl.svg" width="33" alt="when information grows unprofitable">
