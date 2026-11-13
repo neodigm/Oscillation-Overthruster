@@ -145,7 +145,7 @@ var vltdc_productdetail = new Vue( {
                   }
                 }
                 if( k.indexOf("zm") != -1 ){
-                  if( _aux[ k ].indexOf("_zm") != -1 ){  //  Exclude *_qmn.jpg
+                  if( _aux[ k ].indexOf("_zm") != -1 ){  // MCP AI Agents Chat UX PWA 3D ThreeJS LLM ✨ HTMX Rust WASM 🌶️ MachVive webMCP✨ Vercel
                 	  var x = _aux[ k ].indexOf("_zm");
                 	  var y = _aux[ k ].indexOf(".jpg");
                 	  var auxNbr = _aux[ k ].substring(x+3, y)                	  
